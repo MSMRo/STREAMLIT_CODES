@@ -74,6 +74,9 @@ Cada carpeta contiene su propio script funcional (`app.py`) y un archivo `README
 | **07** | [`07_rendimiento_y_cache`](07_rendimiento_y_cache/) | Aceleración drástica con `@st.cache_data` (datos/APIs) y `@st.cache_resource` (conexiones de hardware/modelos). | `uv run streamlit run 07_rendimiento_y_cache/app.py` |
 | **08** | [`08_arduino_serial_hardware`](08_arduino_serial_hardware/) | Conexión física con Arduino por puerto serie USB (PySerial), control digital y PWM, telemetría y Modo Simulación. | `uv run streamlit run 08_arduino_serial_hardware/app.py` |
 | **09** | [`09_aplicacion_multipagina`](09_aplicacion_multipagina/) | Arquitectura multipágina modular con la convención `pages/` y sesión compartida entre vistas. | `uv run streamlit run 09_aplicacion_multipagina/app.py` |
+| **10** | [`10_iot_rest_api_dashboard`](10_iot_rest_api_dashboard/) | Dashboard IoT con backend REST (FastAPI), simulación de ESP32 con requests, colección para Postman y control de relés. | `uv run streamlit run 10_iot_rest_api_dashboard/app.py` |
+| **11** | [`11_iot_mqtt_mosquitto_dashboard`](11_iot_mqtt_mosquitto_dashboard/) | Dashboard IoT con protocolo MQTT y broker Mosquitto, cliente persistente con paho-mqtt y emulador de ESP32. | `uv run streamlit run 11_iot_mqtt_mosquitto_dashboard/app.py` |
+| **12** | [`12_bases_de_datos_sqlite_postgresql`](12_bases_de_datos_sqlite_postgresql/) | Persistencia en base de datos con SQLite local y PostgreSQL (Docker), operaciones CRUD, series temporales y consola SQL. | `uv run streamlit run 12_bases_de_datos_sqlite_postgresql/app.py` |
 
 ---
 
@@ -89,7 +92,34 @@ El tutorial `08_arduino_serial_hardware` resuelve el problema más habitual al u
 
 ---
 
-## 🎛️ 5. Hub Central Interactivo
+## 🌐 5. Módulo Especial: REST API, Postman y Simulación ESP32
+
+El tutorial `10_iot_rest_api_dashboard` implementa la arquitectura de microservicios IoT:
+- **FastAPI Gateway (`server_api.py`):** Expone endpoints `POST /api/telemetry` para recibir telemetría y `POST /api/commands` para encolar órdenes de relé.
+- **Emulador de ESP32 (`simulator_esp32_rest.py`):** Envía lecturas periódicas mediante HTTP POST y hace polling de órdenes.
+- **Colección de Postman:** Archivo [`postman_collection.json`](10_iot_rest_api_dashboard/postman_collection.json) listo para importar con 1 clic en Postman para probar peticiones manuales.
+
+---
+
+## 📡 6. Módulo Especial: MQTT con Mosquitto y Emulación ESP32
+
+El tutorial `11_iot_mqtt_mosquitto_dashboard` utiliza el protocolo ligero Pub/Sub:
+- **Gestor Persistente Paho-MQTT:** Conexión en segundo plano que no se interrumpe con las recargas de Streamlit.
+- **Emulador ESP32 MQTT (`simulator_esp32_mqtt.py`):** Publica datos en `iot/sensores/ESP32_MQTT_01/telemetria` y se suscribe a `iot/sensores/ESP32_MQTT_01/comandos`.
+- **Brokers Soportados:** Funciona tanto con un Mosquitto local como con brokers públicos de prueba (`broker.emqx.io`).
+
+---
+
+## 🗄️ 7. Módulo Especial: Bases de Datos (SQLite y PostgreSQL)
+
+El tutorial `12_bases_de_datos_sqlite_postgresql` enseña a persistir datos de forma permanente:
+- **SQLite:** Base de datos relacional local en archivo `.db` con cero configuración inicial.
+- **PostgreSQL:** Conexión a base de datos de producción mediante SQLAlchemy y comando Docker de despliegue en un solo paso.
+- **Operaciones:** Inserción manual, generación masiva de 50 registros temporales aleatorios, visualizaciones analíticas y consola para ejecutar sentencias SQL directas.
+
+---
+
+## 🎛️ 8. Hub Central Interactivo
 
 Puedes navegar por todo el contenido de este repositorio desde una interfaz gráfica interactiva que incluye catálogo de módulos, estado del sistema y visor de código en tiempo real:
 

@@ -1,0 +1,109 @@
+{
+  "info": {
+    "_postman_id": "a8f7c9e1-4567-4890-bcde-123456789abc",
+    "name": "Streamlit IoT ESP32 REST API",
+    "description": "Colección de pruebas para simular envíos de telemetría de una placa ESP32 y control de actuadores desde Postman hacia el Dashboard de Streamlit.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Enviar Telemetria (Simular ESP32)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"device_id\": \"ESP32_LAB_01\",\n  \"temperature\": 26.8,\n  \"humidity\": 61.2,\n  \"pressure\": 1014.5,\n  \"battery\": 89\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/telemetry",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "telemetry"]
+        },
+        "description": "Envía una lectura individual de sensores desde Postman simulando la ESP32."
+      }
+    },
+    {
+      "name": "2. Consultar Ultima Telemetria (Dashboard)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/telemetry/latest",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "telemetry", "latest"]
+        },
+        "description": "Obtiene la lectura más reciente registrada en el gateway."
+      }
+    },
+    {
+      "name": "3. Consultar Historial de Telemetria",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/telemetry/history?limit=20",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "telemetry", "history"],
+          "query": [
+            {
+              "key": "limit",
+              "value": "20"
+            }
+          ]
+        },
+        "description": "Obtiene el array histórico de mediciones para graficar en Streamlit."
+      }
+    },
+    {
+      "name": "4. Enviar Comando a ESP32 (Actuador)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"device_id\": \"ESP32_LAB_01\",\n  \"command\": \"SET_RELAY\",\n  \"parameter\": \"ON\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/commands",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "commands"]
+        },
+        "description": "Encola una orden de encendido/apagado de actuador o reinicio para que la ESP32 la ejecute."
+      }
+    },
+    {
+      "name": "5. Consultar Comandos Pendientes (Polling ESP32)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/commands/ESP32_LAB_01",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "commands", "ESP32_LAB_01"]
+        },
+        "description": "Endpoint consumido por el microcontrolador para recuperar y vaciar sus tareas pendientes."
+      }
+    }
+  ]
+}

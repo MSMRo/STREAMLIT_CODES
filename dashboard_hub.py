@@ -120,6 +120,30 @@ TUTORIALES = [
         "icono": "🧭",
         "descripcion": "Estructura estándar de proyectos multipágina usando la carpeta pages/ y sesión compartida entre vistas.",
         "comando": "uv run streamlit run 09_aplicacion_multipagina/app.py"
+    },
+    {
+        "id": "10",
+        "folder": "10_iot_rest_api_dashboard",
+        "titulo": "10. Dashboard IoT REST (ESP32 y Postman)",
+        "icono": "🌐",
+        "descripcion": "Recepción de telemetría por HTTP POST/GET, simulación de ESP32 con requests, colección para Postman y control de relés.",
+        "comando": "uv run streamlit run 10_iot_rest_api_dashboard/app.py"
+    },
+    {
+        "id": "11",
+        "folder": "11_iot_mqtt_mosquitto_dashboard",
+        "titulo": "11. Dashboard IoT MQTT (Mosquitto y Paho)",
+        "icono": "📡",
+        "descripcion": "Arquitectura Pub/Sub con paho-mqtt en segundo plano, simulación ESP32 en tiempo real y comandos de actuación.",
+        "comando": "uv run streamlit run 11_iot_mqtt_mosquitto_dashboard/app.py"
+    },
+    {
+        "id": "12",
+        "folder": "12_bases_de_datos_sqlite_postgresql",
+        "titulo": "12. Bases de Datos (SQLite y PostgreSQL)",
+        "icono": "🗄️",
+        "descripcion": "Persistencia relacional con SQLAlchemy, CRUD completo, filtros de series temporales, consola SQL directa y Docker PostgreSQL.",
+        "comando": "uv run streamlit run 12_bases_de_datos_sqlite_postgresql/app.py"
     }
 ]
 
