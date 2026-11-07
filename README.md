@@ -24,6 +24,13 @@ Todo el proyecto está gestionado de forma moderna, reproducible y ultrarrápida
 ### A. Instalación de UV
 
 #### En Windows (PowerShell):
+diferentes formas de instalar uv
+```bash
+$ pip install uv
+$ python -m pip install uv
+```
+
+
 ```powershell
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
@@ -56,6 +63,15 @@ uv sync --system-certs
 
 > **¿Qué hace `uv sync`?**  
 > Lee el archivo `pyproject.toml` y `uv.lock`, crea automáticamente el entorno virtual en `.venv` e instala exactamente las versiones requeridas.
+
+### Clonar y sincronizar un repositorio
+
+```bash
+
+$ git clone https://github.com/MSMRo/STREAMLIT_CODES.git
+$ uv sync  # python -m uv sync
+$ uv run streamlit run FOLDER/app.py   # correr streamlit
+```
 
 ---
 
