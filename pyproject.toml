@@ -1,0 +1,25 @@
+[project]
+name = "streamlit-tutorials"
+version = "0.1.0"
+description = "Tutoriales prácticos y completos para dominar Streamlit con Python y UV"
+readme = "README.md"
+authors = [
+    { name = "MSMRo", email = "moises.meza@upch.pe" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.5.4",
+    "pandas>=3.1.1",
+    "pillow>=13.0.0",
+    "plotly>=7.1.0",
+    "pyserial>=3.5",
+    "requests>=2.34.2",
+    "streamlit>=1.67.0",
+]
+
+[project.scripts]
+streamlit-tutorials = "streamlit_tutorials:main"
+
+[build-system]
+requires = ["uv_build>=0.12.13,<0.13.0"]
+build-backend = "uv_build"
