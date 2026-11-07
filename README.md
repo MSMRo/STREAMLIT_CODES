@@ -38,6 +38,15 @@ Para verificar que esté instalado correctamente:
 uv --version
 ```
 
+### Clonar y sincronizar un repositorio
+
+```bash
+
+$ git clone https://github.com/MSMRo/STREAMLIT_CODES.git
+$ uv sync  # python -m uv sync
+$ uv run streamlit run FOLDER/app.py   # correr streamlit
+```
+
 ---
 
 ## 📦 2. Instalación de Dependencias del Proyecto
